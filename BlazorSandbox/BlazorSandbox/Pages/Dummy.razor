@@ -1,0 +1,22 @@
+<h3>Dummy</h3>
+
+<h5>@Text</h5>
+
+@code {
+     
+     [Parameter]
+     public string Text { get; set; }
+
+     protected override void OnInitialized()
+     {
+          Console.WriteLine($"{Text} OnInitialized");
+          base.OnInitialized();
+     }
+
+     protected override void OnAfterRender(bool firstRender)
+     {
+          Console.WriteLine($"{Text} OnAfterRender");
+          base.OnAfterRender(firstRender);
+     }
+
+}
