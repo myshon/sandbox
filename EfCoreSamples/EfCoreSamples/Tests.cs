@@ -34,9 +34,9 @@ namespace EfCoreSamples
             await ctx.Database.EnsureDeletedAsync();
             await ctx.Database.EnsureCreatedAsync();
             //await ctx.Database.MigrateAsync();
-                await ctx.Set<TestAggregate>().AddAsync(new TestAggregate(Guid.Empty,
-                new Audit(Guid.Empty, Instant.FromUnixTimeTicks(0L), null, DateTimeOffset.Now, DateTime.Now),
-                new LocalDate(2021, 12, 1)));
+                // await ctx.Set<TestAggregate>().AddAsync(new TestAggregate(Guid.Empty,
+                // new Audit(Guid.Empty, Instant.FromUnixTimeTicks(0L), null, DateTimeOffset.Now, DateTime.Now),
+                // new LocalDate(2021, 12, 1)));
             await ctx.SaveChangesAsync();
         }
     }

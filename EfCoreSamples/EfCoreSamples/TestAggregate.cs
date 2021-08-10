@@ -11,14 +11,11 @@ namespace EfCoreSamples
         public Guid Id { get; }
         
         public Audit Audit { get; }
-        
-        public LocalDate Date { get; }
 
-        public TestAggregate(Guid id, Audit audit, LocalDate date)
+        public TestAggregate(Guid id, Audit audit)
         {
             Id = id;
             Audit = audit;
-            Date = date;
         }
 
         private TestAggregate()

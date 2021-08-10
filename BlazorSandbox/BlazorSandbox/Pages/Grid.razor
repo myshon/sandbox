@@ -1,0 +1,56 @@
+﻿@page "/grid"
+@inject IJSRuntime JSRuntime
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Items)
+    {
+        <tr>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+            <td><button @onclick=@(() => Select(item))>Select </button></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+Selected items: 
+<ul>
+    @foreach (var item in SelectedItems)
+    {
+        <li>@item.Code</li>
+    }
+ </ul>
+
+@code {
+
+     public class Item
+     {
+          public string Code { get; init; }
+          public string Name { get; init; }
+     }
+     
+     public List<Item> Items { get; set; } = new()
+     {
+          new() {Code = "1", Name = "First"},
+          new() {Code = "2", Name = "Second"},
+          new() {Code = "3", Name = "Third"}
+     };
+
+    public List<Item> SelectedItems { get; set; } = new List<Item>();
+
+    public async Task Select(Item item)
+    {
+        if (SelectedItems.Any(x => x.Code == item.Code))
+            return;
+        
+        SelectedItems.Add(item);
+    }
+}

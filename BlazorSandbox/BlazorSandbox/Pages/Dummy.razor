@@ -1,11 +1,28 @@
+@inject IJSRuntime JSRuntime
+
 <h3>Dummy</h3>
 
 <h5>@Text</h5>
+
+<input value="@Text" @oninput="@OnInput" type="text" />
+<button onclick="testIt()"> Test it!</button>
 
 @code {
      
      [Parameter]
      public string Text { get; set; }
+     
+     private async Task OnInput(ChangeEventArgs e)
+     {
+          Console.WriteLine($"OnInput");
+     }
+
+     [JSInvokable("testIt")]
+     public async Task TestIt(string id)
+     {
+          Text = "ok!";
+          Console.WriteLine($"TestIt");
+     }
 
      protected override void OnInitialized()
      {

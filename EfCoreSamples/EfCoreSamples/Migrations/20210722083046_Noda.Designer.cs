@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EfCoreSamples.Migrations
 {
     [DbContext(typeof(SampleDbContext))]
-    [Migration("20210720130916_Init")]
-    partial class Init
+    [Migration("20210722083046_Noda")]
+    partial class Noda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,6 @@ namespace EfCoreSamples.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<LocalDate>("Date")
-                        .HasColumnType("date");
 
                     b.HasKey("Id");
 

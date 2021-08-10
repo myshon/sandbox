@@ -41,7 +41,6 @@ namespace EfCoreSamples
         public void Configure(EntityTypeBuilder<TestAggregate> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Date).IsRequired();
             builder.OwnsOne(x => x.Audit, o =>
             {
                 o.Property(x => x.CreatorId).IsRequired();

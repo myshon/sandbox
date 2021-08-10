@@ -3,16 +3,17 @@ using System;
 using EfCoreSamples;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NodaTime;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace EfCoreSamples.Migrations
 {
     [DbContext(typeof(SampleDbContext))]
-    partial class SampleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210722082933_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,11 +39,6 @@ namespace EfCoreSamples.Migrations
                             b1.Property<Guid>("TestAggregateId")
                                 .HasColumnType("uuid");
 
-                            b1.Property<Instant>("CreationTime")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("timestamp")
-                                .HasDefaultValue(NodaTime.Instant.FromUnixTimeTicks(0L));
-
                             b1.Property<Guid>("CreatorId")
                                 .HasColumnType("uuid");
 
@@ -54,9 +50,6 @@ namespace EfCoreSamples.Migrations
 
                             b1.Property<DateTimeOffset?>("Timestamp2")
                                 .HasColumnType("timestamp with time zone");
-
-                            b1.Property<Instant?>("UpdateTime")
-                                .HasColumnType("timestamp");
 
                             b1.HasKey("TestAggregateId");
 

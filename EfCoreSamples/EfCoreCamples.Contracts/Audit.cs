@@ -23,5 +23,9 @@ namespace EfCoreSamples.Contracts
             Timestamp2 = timestamp2;
             Timestamp = timestamp;
         }
+
+        private Audit()
+        {
+        }
     }
 }

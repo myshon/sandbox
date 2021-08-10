@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using NodaTime;
 
 namespace EfCoreSamples.Migrations
 {
@@ -14,11 +13,8 @@ namespace EfCoreSamples.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Audit_CreatorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Audit_CreationTime = table.Column<Instant>(type: "timestamp", nullable: false, defaultValue: NodaTime.Instant.FromUnixTimeTicks(0L)),
-                    Audit_UpdateTime = table.Column<Instant>(type: "timestamp", nullable: true),
                     Audit_Timestamp = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)),
-                    Audit_Timestamp2 = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    Date = table.Column<LocalDate>(type: "date", nullable: false)
+                    Audit_Timestamp2 = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
